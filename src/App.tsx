@@ -1,13 +1,23 @@
+import styled from "styled-components";
 import GlobalStyles from "./GlobalStyles";
-import Main from "./components/Main";
+import Advicebox from "./components/Advicebox";
 
 function App(): JSX.Element {
   return (
-    <div>
+    <Container>
       <GlobalStyles />
-      <Main />
-    </div>
+      <Advicebox />
+    </Container>
   );
 }
 
 export default App;
+
+const Container = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #202733;
+`;
