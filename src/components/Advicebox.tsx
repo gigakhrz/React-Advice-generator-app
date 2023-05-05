@@ -138,5 +138,10 @@ const AdviceContainer = styled.div`
     align-items: center;
     justify-content: center;
     bottom: -32px;
+    cursor: pointer;
+
+    :hover {
+      box-shadow: 0px 0px 40px #53ffaa;
+    }
   }
 `;
