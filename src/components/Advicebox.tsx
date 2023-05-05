@@ -1,8 +1,20 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import DiceImage from "../assets/icon-dice.svg";
+import axios from "axios";
 
 const Advicebox = (): JSX.Element => {
+  const [advice, setAdvice] = useState(false);
+  const [clicl, setClick] = useState(false);
+
+  useEffect(() => {
+    const AdviceInfo = async () => {
+      const response = await axios.get("https://api.adviceslip.com/advice");
+      const data = response.data.slip;
+      setAdvice(data);
+    };
+    AdviceInfo();
+  }, []);
   return (
     <AdviceContainer>
       <h4>ADVICE #117</h4>
@@ -16,7 +28,7 @@ const Advicebox = (): JSX.Element => {
         height="16"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g fill="none" fill-rule="evenodd">
+        <g fill="none">
           <path fill="#4F5D74" d="M0 8h122v1H0zM173 8h122v1H173z" />
           <g transform="translate(138)" fill="#CEE3E9">
             <rect width="6" height="16" rx="3" />
@@ -31,7 +43,7 @@ const Advicebox = (): JSX.Element => {
         height="16"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g fill="none" fill-rule="evenodd">
+        <g fill="none">
           <path fill="#4F5D74" d="M0 8h196v1H0zM248 8h196v1H248z" />
           <g transform="translate(212)" fill="#CEE3E9">
             <rect width="6" height="16" rx="3" />
