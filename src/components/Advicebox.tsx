@@ -3,25 +3,32 @@ import styled from "styled-components";
 import DiceImage from "../assets/icon-dice.svg";
 import axios from "axios";
 
+interface adviceType {
+  id: number;
+  advice: string;
+}
+
 const Advicebox = (): JSX.Element => {
-  const [advice, setAdvice] = useState(false);
-  const [clicl, setClick] = useState(false);
+  const [adviceId, setAdviceId] = useState<adviceType | null>(null);
+  const [click, setClick] = useState(false);
 
   useEffect(() => {
     const AdviceInfo = async () => {
       const response = await axios.get("https://api.adviceslip.com/advice");
       const data = response.data.slip;
-      setAdvice(data);
+      setAdviceId(data);
     };
     AdviceInfo();
-  }, []);
+  }, [click]);
+
+  const changeOnClick = () => {
+    setClick(!click);
+  };
+
   return (
     <AdviceContainer>
-      <h4>ADVICE #117</h4>
-      <h2>
-        “It is easy to sit up and take notice, what's difficult is getting up
-        and taking action.”
-      </h2>
+      <h4>ADVICE #{adviceId?.id}</h4>
+      <h2>{adviceId?.advice}</h2>
       <svg
         className="mobile"
         width="295"
@@ -52,7 +59,7 @@ const Advicebox = (): JSX.Element => {
         </g>
       </svg>
 
-      <div className="generate">
+      <div className="generate" onClick={changeOnClick}>
         <img src={DiceImage} alt="Dice image" />
       </div>
     </AdviceContainer>
