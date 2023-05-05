@@ -28,7 +28,7 @@ const Advicebox = (): JSX.Element => {
   return (
     <AdviceContainer>
       <h4>ADVICE #{adviceId?.id}</h4>
-      <h2>{adviceId?.advice}</h2>
+      <h2>"{adviceId?.advice}"</h2>
       <svg
         className="mobile"
         width="295"
@@ -81,11 +81,22 @@ const AdviceContainer = styled.div`
   border-radius: 10px;
   position: relative;
 
+  @media (min-width: 1024px) {
+    width: 540px;
+    padding: 48px 48px 72px;
+  }
+
   h4 {
     font-size: 11px;
     line-height: 15px;
     letter-spacing: 3.46px;
     color: #53ffaa;
+
+    @media (min-width: 1024px) {
+      font-size: 13px;
+      line-height: 17.75px;
+      letter-spacing: 4.09px;
+    }
   }
 
   h2 {
@@ -94,6 +105,13 @@ const AdviceContainer = styled.div`
     line-height: 33px;
     letter-spacing: -0.257px;
     text-align: center;
+
+    @media (min-width: 1024px) {
+      font-size: 28px;
+      line-height: 38.25px;
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+    }
   }
 
   .desktop {
